@@ -1,0 +1,23 @@
+<h1>Liste des livres</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Ref</th>
+        <th>Title</th>
+        <th>Publication Date</th>
+        <th>Published</th>
+        <th>Author</th>
+        <th>Category</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.ref }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.publicationDate|date('Y-m-d') }}</td>
+        <td>{{ book.published }}</td>
+        <td>{{ book.author.username }}</td>
+        <td>{{ book.category }}</td>
+    </tr>
+    {% endfor %}
+</table>
