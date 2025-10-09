@@ -1,0 +1,13 @@
+<h1>Tableau</h1>
+<table border="1" width="100%">
+    <tr>
+        <th>element 1</th>
+        <th>element 2</th>
+        <th>element 3</th>
+    </tr>
+    <tr>
+        {% for item in tab %}
+        <td>{{ item }}</td>
+        {% endfor %}
+    </tr>
+</table>

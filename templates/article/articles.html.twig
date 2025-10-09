@@ -1,0 +1,24 @@
+<h1>Articles</h1>
+<table border="1" width="100%">
+    <tr>
+        <th>title</th>
+        <th>image</th>
+        <th>price</th>
+    </tr>
+    {% for article in articles %}
+    <tr>
+        <td>{{ article.title }}</td>
+        <td><img src="{{ article.image }}" width="50"></td>
+        <td>{{ article.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% set total = 0 %}
+{% for article in articles %}
+    {% set total = total + article.price %}
+{% endfor %}
+<p>Total: {{ total }}</p>
+
+{% set totalttc = total + (total * 0.19) %}
+<p>Total TTC: {{ totalttc }}</p>
