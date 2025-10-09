@@ -93,7 +93,7 @@ final class AuthorController extends AbstractController
     public function edit(Request $request, Author $author, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AuthorformType::class, $author);
-        $form->add('submit', SubmitType::class, ['label' => 'Edit']);
+        $form->add('submit', SubmitType::class);
         
         $form->handleRequest($request);
 
