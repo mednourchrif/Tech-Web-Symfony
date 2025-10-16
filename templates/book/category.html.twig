@@ -1,4 +1,4 @@
-<h1>Liste des livres</h1>
+<h1>Books by category: {{ category }}</h1>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -26,7 +26,4 @@
     </tr>
     {% endfor %}
 </table>
-
-<h1>Number of published books: {{ nb_published }}</h1>
-<h1>Number of unpublished books: {{ nb_unpublished }}</h1>
-<h1>Number of romance books: {{ romanceCount }}</h1>
+<h1>Number of books: {{ books|length }}</h1>

@@ -46,9 +46,12 @@ final class BookController extends AbstractController
     {
         $publishedbooks = $bookRepository->findBy(['published' => true]);
         $unpublishedbooks = $bookRepository->findBy(['published' => false]);
+        $romanceCount = $bookRepository->countBooksByRomanceCategory();
+
         return $this->render('book/books.html.twig', [
             'publishedbooks' => $publishedbooks,
             'unpublishedbooks' => $unpublishedbooks,
+            'romanceCount' => $romanceCount,
         ]);
     }
 
@@ -58,6 +61,7 @@ final class BookController extends AbstractController
         $books = $bookRepository->findAll();
         $published_count = 0;
         $unpublished_count = 0;
+        $romanceCount = $bookRepository->countBooksByRomanceCategory();
         
         foreach ($books as $book) {
             if ($book->isPublished()) { $published_count++;} 
@@ -67,6 +71,7 @@ final class BookController extends AbstractController
             'books' => $books,
             'nb_published' => $published_count,
             'nb_unpublished' => $unpublished_count,
+            'romanceCount' => $romanceCount,
         ]);
     }
 
@@ -97,5 +102,16 @@ final class BookController extends AbstractController
 
         $this->addFlash('success', 'Book deleted successfully!');
         return $this->redirectToRoute('app_book_affiche');
+    }
+
+    #[Route('/book/category/{category}', name: 'app_book_category')]
+    public function categoryBook($category, BookRepository $bookRepository): Response
+    {
+        $books = $bookRepository->findBooksByCategory($category);
+        
+        return $this->render('book/category.html.twig', [
+            'books' => $books,
+            'category' => $category,
+        ]);
     }
 }
