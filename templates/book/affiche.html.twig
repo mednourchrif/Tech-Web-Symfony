@@ -16,7 +16,7 @@
         <td>{{ book.ref }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.publicationDate|date('Y-m-d') }}</td>
-        <td>{{ book.published }}</td>
+        <td>{{ book.published ? 'Yes' : 'No' }}</td>
         <td>{{ book.author.username }}</td>
         <td>{{ book.category }}</td>
         <td>
@@ -26,3 +26,6 @@
     </tr>
     {% endfor %}
 </table>
+
+<h1>Number of published books: {{ nb_published }}</h1>
+<h1>Number of unpublished books: {{ nb_unpublished }}</h1>

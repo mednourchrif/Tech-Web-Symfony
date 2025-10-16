@@ -41,12 +41,32 @@ final class BookController extends AbstractController
         ]);
     }
 
+    #[Route('/books', name: 'app_books')]
+    public function books(BookRepository $bookRepository): Response
+    {
+        $publishedbooks = $bookRepository->findBy(['published' => true]);
+        $unpublishedbooks = $bookRepository->findBy(['published' => false]);
+        return $this->render('book/books.html.twig', [
+            'publishedbooks' => $publishedbooks,
+            'unpublishedbooks' => $unpublishedbooks,
+        ]);
+    }
+
     #[Route('/book/affiche', name: 'app_book_affiche')]
     public function afficheBook(BookRepository $bookRepository): Response
     {
         $books = $bookRepository->findAll();
+        $published_count = 0;
+        $unpublished_count = 0;
+        
+        foreach ($books as $book) {
+            if ($book->isPublished()) { $published_count++;} 
+            else { $unpublished_count++;} 
+        }
         return $this->render('book/affiche.html.twig', [
             'books' => $books,
+            'nb_published' => $published_count,
+            'nb_unpublished' => $unpublished_count,
         ]);
     }
 

@@ -1,0 +1,35 @@
+{% if publishedbooks|length == 0 %}
+    <h1>No books found</h1>
+{% else %}
+    <h1>Published Books</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Ref</th>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Published</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+        {% for publishedbook in publishedbooks %}
+        <tr>
+            <td>{{ publishedbook.id }}</td>
+            <td>{{ publishedbook.ref }}</td>
+            <td>{{ publishedbook.title }}</td>
+            <td>{{ publishedbook.publicationDate|date('Y-m-d') }}</td>
+            <td>{{ publishedbook.published ? 'Yes' : 'No' }}</td>
+            <td>{{ publishedbook.author.username }}</td>
+            <td>{{ publishedbook.category }}</td>
+            <td>
+                <a href="{{ path('app_book_edit', {'id': publishedbook.id}) }}">Edit</a>
+                <a href="{{ path('app_book_delete', {'id': publishedbook.id}) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+<h1>Number of published books: {{ publishedbooks|length }}</h1>
+<h1>Number of unpublished books: {{ unpublishedbooks|length }}</h1>
