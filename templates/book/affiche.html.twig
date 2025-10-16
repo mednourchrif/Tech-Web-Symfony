@@ -8,6 +8,7 @@
         <th>Published</th>
         <th>Author</th>
         <th>Category</th>
+        <th>Actions</th>
     </tr>
     {% for book in books %}
     <tr>
@@ -18,6 +19,10 @@
         <td>{{ book.published }}</td>
         <td>{{ book.author.username }}</td>
         <td>{{ book.category }}</td>
+        <td>
+            <a href="{{ path('app_book_edit', {'id': book.id}) }}">Edit</a>
+            <a href="{{ path('app_book_delete', {'id': book.id}) }}">Delete</a>
+        </td>
     </tr>
     {% endfor %}
 </table>
