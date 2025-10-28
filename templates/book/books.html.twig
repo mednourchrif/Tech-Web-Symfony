@@ -1,3 +1,4 @@
+{# bch naffichiw liste mt3 books published w idha 9a liste fergha bch yaffichi message "No books found" #}
 {% if publishedbooks|length == 0 %}
     <h1>No books found</h1>
 {% else %}
@@ -18,8 +19,10 @@
             <td>{{ publishedbook.id }}</td>
             <td>{{ publishedbook.ref }}</td>
             <td>{{ publishedbook.title }}</td>
+            {# bch naffichiw publicationDate b format date ('Y-m-d') #}
             <td>{{ publishedbook.publicationDate|date('Y-m-d') }}</td>
-            <td>{{ publishedbook.published ? 'Yes' : 'No' }}</td>
+            {# bch naffichiw published w not published ca depend ml colonne published lil book mte3na true wala false #}
+            <td>{{ publishedbook.published ? 'Published' : 'Not Published' }}</td>
             <td>{{ publishedbook.author.username }}</td>
             <td>{{ publishedbook.category }}</td>
             <td>
@@ -31,6 +34,7 @@
     </table>
 {% endif %}
 
+{# bch naffichiw nombre mt3 books published w unpublished w romance #}
 <h1>Number of published books: {{ publishedbooks|length }}</h1>
 <h1>Number of unpublished books: {{ unpublishedbooks|length }}</h1>
 <h1>Number of romance books: {{ romanceCount }}</h1>

@@ -1,4 +1,7 @@
+{# Liste des auteurs (nombre d'auteurs) #}
 <h1>Liste des auteurs ({{ authors|length }} auteurs)</h1>
+
+{# idha liste mawjouda w feha des auteurs bch yaffichi tableau snn yaffichi message "aucun auteur trouvé." #}
 {% if authors is defined and authors|length > 0 %}
     <table border="1" width="100%">
         <tr>
@@ -20,6 +23,7 @@
         </tr>
         {% endfor %}
     </table>
+    {# bch yaffichilna nombre total de livres des auteurs #}
     {% set total = 0 %}
     {% for author in authors %}
         {% set total = total + author.nb_books %}

@@ -1,3 +1,4 @@
+{# bch naffichiw liste mt3 books #}
 <h1>Liste des livres</h1>
 <table border="1">
     <tr>
@@ -15,8 +16,10 @@
         <td>{{ book.id }}</td>
         <td>{{ book.ref }}</td>
         <td>{{ book.title }}</td>
+        {# bch naffichiw publicationDate b format date ('Y-m-d') #}
         <td>{{ book.publicationDate|date('Y-m-d') }}</td>
-        <td>{{ book.published ? 'Yes' : 'No' }}</td>
+        {# bch naffichiw published w not published ca depend ml colonne published lil book mte3na true wala false #}
+        <td>{{ book.published ? 'Published' : 'Not Published' }}</td>
         <td>{{ book.author.username }}</td>
         <td>{{ book.category }}</td>
         <td>
@@ -27,6 +30,7 @@
     {% endfor %}
 </table>
 
+{# bch naffichiw nombre mt3 books published w unpublished w romance #}
 <h1>Number of published books: {{ nb_published }}</h1>
 <h1>Number of unpublished books: {{ nb_unpublished }}</h1>
 <h1>Number of romance books: {{ romanceCount }}</h1>

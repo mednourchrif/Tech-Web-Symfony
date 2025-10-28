@@ -1,3 +1,5 @@
+
+{# hedhi interface mte3na bch nchoufou liste mte3 auteurs #}
 <h1>Liste des auteurs</h1>
 <table border="1">
     <tr>
@@ -18,3 +20,10 @@
     </tr>
     {% endfor %}
 </table>
+{# affichage message ili b3athneh bl happyQuote #}
+{{ happyQuote }}
+{# affichage liste mte3 best authors #}
+<h2>Best authors</h2>
+{% for author in bestAuthors %}
+    <p>{{ author.username }}</p>
+{% endfor %}

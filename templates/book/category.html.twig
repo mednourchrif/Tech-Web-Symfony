@@ -1,3 +1,4 @@
+{# bch naffichiw liste mt3 books b category specifique ili b3athneha f lien mte3na #}
 <h1>Books by category: {{ category }}</h1>
 <table border="1">
     <tr>
@@ -15,8 +16,10 @@
         <td>{{ book.id }}</td>
         <td>{{ book.ref }}</td>
         <td>{{ book.title }}</td>
+        {# bch naffichiw publicationDate b format date ('Y-m-d') #}
         <td>{{ book.publicationDate|date('Y-m-d') }}</td>
-        <td>{{ book.published ? 'Yes' : 'No' }}</td>
+        {# bch naffichiw published w not published ca depend ml colonne published lil book mte3na true wala false #}
+        <td>{{ book.published ? 'Published' : 'Not Published' }}</td>
         <td>{{ book.author.username }}</td>
         <td>{{ book.category }}</td>
         <td>
@@ -26,4 +29,5 @@
     </tr>
     {% endfor %}
 </table>
+{# bch naffichiw nombre mt3 books b category specifique #}
 <h1>Number of books: {{ books|length }}</h1>
